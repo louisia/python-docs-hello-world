@@ -6,8 +6,6 @@ app = Flask(__name__)
 def hello():
     
     f = open("response.txt", 'w+')
-    print ("headers", file=f)
-    print (request.headers, file=f)
-    cookies = request.headers.get("Cookie")
-    print (cookies, file=f)
-    return "ok"
+    auth_ookies = request.headers.get("Cookie")
+    response = requests.get('https://ztnaportal.azurewebsites.net/.auth/me',headers={'Cookie': auth_ookies})
+    return response.json()[0]['user_id']
