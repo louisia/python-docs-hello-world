@@ -1,2 +1,4 @@
-Flask>=1.0,<=1.1.2
+flask
+flask_restful
 requests
+flask_sqlalchemy
